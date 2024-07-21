@@ -1,10 +1,11 @@
 import { useMutation } from "react-query";
 import { useAuthContext } from "../../context/AuthContext";
+import { API_BASE_URL } from "./api";
 
 export const useGetQuarter2 = () => {
   const { jwt } = useAuthContext();
   const getQuarter2Info = async () => {
-    const response = await fetch(`http://localhost:7000/api/v1/quarter2`, {
+    const response = await fetch(`${API_BASE_URL}/api/v1/quarter2`, {
       headers: {
         Authorization: `Bearer ${jwt}`,
       },
@@ -30,7 +31,7 @@ export const useUpdateQuarter2 = () => {
   const { jwt } = useAuthContext();
   const updateQuarter2Info = async (data) => {
     const response = await fetch(
-      `http://localhost:7000/api/v1/admin/updateQuarter2`,
+      `${API_BASE_URL}/api/v1/admin/updateQuarter2`,
       {
         method: "PUT",
         headers: {
@@ -60,7 +61,7 @@ export const useUpdateQuarter2 = () => {
 export const useCreateQuarter2 = () => {
   const { jwt } = useAuthContext();
   const createQuarter2Info = async (data) => {
-    const response = await fetch(`http://localhost:7000/api/v1/quarter2`, {
+    const response = await fetch(`${API_BASE_URL}/api/v1/quarter2`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -89,7 +90,7 @@ export const useGetUserQuarter2 = () => {
   const { jwt } = useAuthContext();
   const getUserQuarter2 = async () => {
     const response = await fetch(
-      `http://localhost:7000/api/v1/quarter2/quarter2Details`,
+      `${API_BASE_URL}/api/v1/quarter2/quarter2Details`,
       {
         headers: {
           Authorization: `Bearer ${jwt}`,
@@ -118,7 +119,7 @@ export const useGetIndividualUserQuarter2 = () => {
   const getIndividualUserQuarter2 = async (id) => {
     // console.log("ID");
     const response = await fetch(
-      `http://localhost:7000/api/v1/quarter2/quarter2Details/${id}`,
+      `${API_BASE_URL}/api/v1/quarter2/quarter2Details/${id}`,
       {
         headers: {
           Authorization: `Bearer ${jwt}`,

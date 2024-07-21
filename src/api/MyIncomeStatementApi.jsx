@@ -2,12 +2,11 @@ import { useEffect } from "react";
 import { useMutation } from "react-query";
 import { toast } from "react-toastify";
 import { useAuthContext } from "../../context/AuthContext";
+import { API_BASE_URL } from "./api";
 
 export const useGetIncome = () => {
   const getIncomeStatement = async () => {
-    const response = await fetch(
-      `http://localhost:7000/api/v1/incomeStatement`
-    );
+    const response = await fetch(`${API_BASE_URL}/api/v1/incomeStatement`);
     if (!response.ok) {
       throw new Error("Error in Getting Income Statement");
     }
@@ -28,17 +27,14 @@ export const useGetIncome = () => {
 export const useUpdateIncome = () => {
   const updateIncomeStatement = async (data) => {
     // console.log("DATA", data);
-    const response = await fetch(
-      `http://localhost:7000/api/v1/editIncomeStatement`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
+    const response = await fetch(`${API_BASE_URL}/api/v1/editIncomeStatement`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
 
-        body: JSON.stringify(data),
-      }
-    );
+      body: JSON.stringify(data),
+    });
     if (!response.ok) {
       throw new Error("Error in Updating Income Statement");
     }
@@ -66,7 +62,7 @@ export const useGetUserIncome = () => {
   const { jwt } = useAuthContext();
   const getUserIncomeStatement = async () => {
     const response = await fetch(
-      `http://localhost:7000/api/v1/user/incomeStatement`,
+      `${API_BASE_URL}/api/v1/user/incomeStatement`,
       {
         headers: {
           Authorization: `Bearer ${jwt}`,
@@ -95,7 +91,7 @@ export const useCreateUserIncomeStatement = () => {
 
   const createUserIncomeStatement = async () => {
     const response = await fetch(
-      `http://localhost:7000/api/v1/user/incomeStatement`,
+      `${API_BASE_URL}/api/v1/user/incomeStatement`,
       {
         method: "POST",
         headers: {

@@ -2,13 +2,14 @@ import { useEffect } from "react";
 import { useMutation } from "react-query";
 import { toast } from "react-toastify";
 import { useAuthContext } from "../../context/AuthContext";
+import { API_BASE_URL } from "./api";
 
 export const usecreateQuarter1 = () => {
   const { jwt } = useAuthContext();
   // console.log(jwt);
   const createQuarter1 = async (data) => {
     // console.log(data);
-    const response = await fetch("http://localhost:7000/api/v1/quarter1", {
+    const response = await fetch(`${API_BASE_URL}/api/v1/quarter1`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +47,7 @@ export const usecreateQuarter1 = () => {
 
 export const useGetQuarter1 = () => {
   const getQuarter1Details = async (id) => {
-    const response = await fetch(`http://localhost:7000/api/v1/quarter1/${id}`);
+    const response = await fetch(`${API_BASE_URL}/api/v1/quarter1/${id}`);
     if (!response.ok) {
       throw new Error("Error in Getting quarter 1");
     }
@@ -67,7 +68,7 @@ export const useGetQuarter1 = () => {
 export const useGetIndividualQuarter1 = () => {
   const { jwt } = useAuthContext();
   const getIndividualQuarter1 = async () => {
-    const response = await fetch(`http://localhost:7000/api/v1/quarter1`, {
+    const response = await fetch(`${API_BASE_URL}/api/v1/quarter1`, {
       headers: {
         Authorization: `Bearer ${jwt}`,
       },
@@ -93,7 +94,7 @@ export const useGetIndividualQuarter1Admin = () => {
   const { jwt } = useAuthContext();
   const getIndividualQuarter1Admin = async (id) => {
     const response = await fetch(
-      `http://localhost:7000/api/v1/admin/getIndividualQuarter1/${id}`,
+      `${API_BASE_URL}/api/v1/admin/getIndividualQuarter1/${id}`,
       {
         headers: {
           Authorization: `Bearer ${jwt}`,
@@ -121,7 +122,7 @@ export const useGetIndividualQuarter2Admin = () => {
   const { jwt } = useAuthContext();
   const getIndividualQuarter2Admin = async (id) => {
     const response = await fetch(
-      `http://localhost:7000/api/v1/admin/getIndividualQuarter2/${id}`,
+      `${API_BASE_URL}/api/v1/admin/getIndividualQuarter2/${id}`,
       {
         headers: {
           Authorization: `Bearer ${jwt}`,

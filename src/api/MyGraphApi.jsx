@@ -1,12 +1,13 @@
 import { useMutation } from "react-query";
 import { useAuthContext } from "../../context/AuthContext";
+import { API_BASE_URL } from "./api";
 
 export const useGetGraphData = () => {
   const { jwt } = useAuthContext();
 
   const getGraphData = async () => {
     const response = await fetch(
-      `http://localhost:7000/api/v1/admin/incomeStatement`,
+      `${API_BASE_URL}/api/v1/admin/incomeStatement`,
       {
         headers: {
           Authorization: `Bearer ${jwt}`,
